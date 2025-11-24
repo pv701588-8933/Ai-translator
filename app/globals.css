@@ -1,0 +1,203 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #f5f0ff;
+  --foreground: #1a0f2e;
+  --card: #ffffff;
+  --card-foreground: #1a0f2e;
+  --popover: #ffffff;
+  --popover-foreground: #1a0f2e;
+  --primary: #7a5af8;
+  --primary-foreground: #ffffff;
+  --secondary: #c5b3ff;
+  --secondary-foreground: #1a0f2e;
+  --muted: #e8dcff;
+  --muted-foreground: #5d4e8c;
+  --accent: #9f8fff;
+  --accent-foreground: #ffffff;
+  --destructive: #ff6b6b;
+  --destructive-foreground: #ffffff;
+  --border: #dcc7ff;
+  --input: #f5f0ff;
+  --ring: #7a5af8;
+  --chart-1: #7a5af8;
+  --chart-2: #9f8fff;
+  --chart-3: #c5b3ff;
+  --chart-4: #e8dcff;
+  --chart-5: #a89fd9;
+  --radius: 1.25rem;
+  --sidebar: #fafbfc;
+  --sidebar-foreground: #1a0f2e;
+  --sidebar-primary: #7a5af8;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #c5b3ff;
+  --sidebar-accent-foreground: #1a0f2e;
+  --sidebar-border: #dcc7ff;
+  --sidebar-ring: #7a5af8;
+}
+
+.dark {
+  --background: #0f0f16;
+  --foreground: #ffffff;
+  --card: #1c1c27;
+  --card-foreground: #ffffff;
+  --popover: #1c1c27;
+  --popover-foreground: #ffffff;
+  --primary: #9d4edd;
+  --primary-foreground: #0f0f16;
+  --secondary: #5a189a;
+  --secondary-foreground: #ffffff;
+  --muted: #2d2d3d;
+  --muted-foreground: #c9c9c9;
+  --accent: #b560ff;
+  --accent-foreground: #0f0f16;
+  --destructive: #ff6b6b;
+  --destructive-foreground: #0f0f16;
+  --border: #6633ff;
+  --input: #2d2d3d;
+  --ring: #9d4edd;
+  --chart-1: #9d4edd;
+  --chart-2: #b560ff;
+  --chart-3: #c566ff;
+  --chart-4: #7d3ff2;
+  --chart-5: #a040d8;
+  --sidebar: #1c1c27;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #9d4edd;
+  --sidebar-primary-foreground: #0f0f16;
+  --sidebar-accent: #b560ff;
+  --sidebar-accent-foreground: #0f0f16;
+  --sidebar-border: #6633ff;
+  --sidebar-ring: #9d4edd;
+}
+
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: calc(var(--radius) - 1px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Add styles for select options in dark mode */
+  select option {
+    background-color: white;
+    color: black;
+  }
+
+  .dark select option {
+    background-color: #1e1e28;
+    color: #ffffff;
+  }
+}
+
+@layer utilities {
+  /* Add light-theme specific card-top styling and section-label styling */
+  .light-theme .card-top {
+    background: rgba(80, 0, 150, 0.05) !important;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .light-theme .card-top .section-label {
+    color: #4a3a7a !important;
+    font-weight: 600 !important;
+  }
+
+  .fade-in {
+    @apply animate-in fade-in duration-300;
+  }
+
+  .translate-up {
+    @apply animate-in slide-in-from-bottom-2 duration-300;
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  /* Add custom dropdown styling for dark mode text visibility */
+  select {
+    @apply appearance-none;
+  }
+
+  select option {
+    background: white;
+    color: #1a1a1a;
+    padding: 8px;
+  }
+
+  .dark select option {
+    background: #1e1e28;
+    color: #ffffff;
+  }
+
+  /* Add dark mode hover effect for translator boxes */
+  .dark textarea {
+    @apply transition-all duration-300;
+  }
+
+  .dark textarea:hover {
+    --tw-shadow: 0 0 12px rgba(150, 80, 255, 0.4);
+    box-shadow: var(--tw-shadow);
+    transform: scale(1.01);
+  }
+
+  /* Removed problematic arbitrary value @apply rules - hover effects handled in components */
+
+  @media (max-width: 640px) {
+    /* Removed floating-alphabet-bg media query */
+  }
+}
